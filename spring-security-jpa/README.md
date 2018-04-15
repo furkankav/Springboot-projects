@@ -1,3 +1,3 @@
-* Spring Security Using JPA
+# Spring Security Using JPA
 
 It implements user authentication by using a database.
