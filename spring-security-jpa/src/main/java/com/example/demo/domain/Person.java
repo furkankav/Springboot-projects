@@ -2,6 +2,8 @@ package com.example.demo.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,16 +37,24 @@ public class Person {
 	@NotEmpty(message = "*Please provide an email")
 	private String email;
 	
+	@Column(name = "active", nullable = false)
+	private Boolean active;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "role", nullable = false)
+    private UserRole role;
 	
 
 	public Person() {
 	}
 
-	public Person(Long id, String userName, String password, String email) {
+	public Person(Long id, String userName, String password, String email, Boolean active, UserRole role) {
 		this.id = id;
 		this.userName = userName;
 		this.password = password;
 		this.email = email;
+		this.active = active;
+		this.role = role;
 	}
 
 	public Long getId() {
@@ -77,6 +87,22 @@ public class Person {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	public UserRole getRole() {
+		return role;
+	}
+
+	public void setRole(UserRole role) {
+		this.role = role;
 	}
 	
 	
